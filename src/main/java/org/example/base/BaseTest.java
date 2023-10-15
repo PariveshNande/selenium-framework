@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
+import org.testng.annotations.AfterMethod;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -72,7 +73,7 @@ public class BaseTest {
         driver.get(properties.getProperty("url"));
     }*/
     public static void browserInvocation() {
-        browsers = Browsers.SAFARI;
+        browsers = Browsers.CHROME;
         switch (browsers) {
             case CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -104,5 +105,10 @@ public class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
         driver.get(properties.getProperty("url"));
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
     }
 }
