@@ -1,0 +1,25 @@
+
+S
+java:S1874L"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8ãÉ‚•³1
+”
+java:S1130Q"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(éúÓæ8âÉ‚•³1
+S
+java:S1874T"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8±Åƒ•³1
+G	java:S106W"+Replace this use of System.out by a logger.(à¸¥¢8äÉ‚•³1
+S
+java:S1874_"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8î¹…•³1
+L	java:S106b"+Replace this use of System.out by a logger.(Ì¸ı‰ùÿÿÿÿ8åÉ‚•³1
+S
+java:S1874j"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8èÜ…•³1
+G	java:S106m"+Replace this use of System.out by a logger.(Çóµá8åÉ‚•³1
+S
+java:S1874u"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8¬ı…•³1
+G	java:S106x"+Replace this use of System.out by a logger.(Çóµá8æÉ‚•³1
+T
+java:S1874€"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8Ç†•³1
+M	java:S106„"+Replace this use of System.out by a logger.(¾àË¬ûÿÿÿÿ8çÉ‚•³1
+T
+java:S1874Œ"6Remove this use of "implicitlyWait"; it is deprecated.(ßË¦·8Ê†•³1
+M	java:S106•"+Replace this use of System.out by a logger.(ûããıÿÿÿÿ8èÉ‚•³1
+j
+java:S1128"HRemove this unused import 'org.example.util.TestUtil.PAGE_LOAD_TIMEOUT'.(Ÿƒ¼ÿüÿÿÿÿ8êÍ„•³1
