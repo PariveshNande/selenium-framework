@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import org.example.actions.ActionDriver;
 import org.example.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 
 public class LandingPage extends BaseTest {
+    ActionDriver actionDriver = new ActionDriver();
     /**
      * Page Factory for Landing Page
      */
