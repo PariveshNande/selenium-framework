@@ -72,7 +72,7 @@ public class BaseTest {
         driver.get(properties.getProperty("url"));
     }*/
     public static void browserInvocation() {
-        browsers = Browsers.SAFARI;
+        browsers = Browsers.CHROME;
         switch (browsers) {
             case CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();

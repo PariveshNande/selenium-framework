@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.example.TestConstants.*;
 
@@ -37,7 +38,7 @@ public class LandingPageTest extends BaseTest {
     }
 
     @Test(description = "Validate login btn is enabled and on clicking in page navigates to login page and validated title of the page", enabled = true)
-    public void navigateToLoginPage() {
+    public void navigateToLoginPage() throws InterruptedException {
         String loginPageTitle = landingPage.navigateToLoginPage();
         Assert.assertEquals(loginPageTitle, _loginPageTitle);
     }
@@ -56,17 +57,23 @@ public class LandingPageTest extends BaseTest {
 
     @Test(description = "", enabled = true)
     public void navigateToComparePage() {
-        landingPage.navigateToCompare();
+        String comparePageTitle = landingPage.navigateToCompare();
+        Assert.assertEquals(comparePageTitle, _comparePageTitle);
     }
 
     @Test(description = "", enabled = true)
     public void navigateToPricingPage() {
-        landingPage.navigateToPricing();
+        String pricingPageTitle = landingPage.navigateToPricing();
+        Assert.assertEquals(pricingPageTitle, _pricingPageTitle);
     }
 
     @Test(description = "", enabled = true)
     public void navigateToSupportPage() {
-        landingPage.navigateToSupport();
+        List<String> supportPageData = landingPage.navigateToSupport();
+        supportPageData.forEach(e -> {
+            Assert.assertEquals(e, _supportPageTitle);
+            Assert.assertEquals(e, _supportPageUrl);
+        });
     }
 
 
