@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class ActionDriver extends BaseTest implements ActionInterface {
 
     /**
-     * Load and Read Config.Properties File
+     * Load and Read config.properties File
      */
     public ActionDriver() throws IOException {
     }
