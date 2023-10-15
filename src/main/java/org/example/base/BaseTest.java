@@ -3,9 +3,9 @@ package org.example.base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.example.util.TestUtil;
 import org.example.util.executables.Browsers;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,11 +14,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -40,8 +39,8 @@ public class BaseTest {
 
         try {
             properties = new Properties();
-            FileInputStream fileInputStream = new FileInputStream(System.getProperty("src/main/java/org/example/config/config.properties"));
-            properties.load(fileInputStream);
+            FileReader fileReader = new FileReader("src/main/java/org/example/config/config.properties");
+            properties.load(fileReader);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -73,29 +72,12 @@ public class BaseTest {
         driver.get(properties.getProperty("url"));
     }*/
     public static void browserInvocation() {
-        /*Scanner scn = new Scanner(System.in);
-        System.out.println("Enter Browser Name: ");
-        String str = scn.next();
-        Browsers browsers = null;
-        if (str.equalsIgnoreCase("chrome")) {
-            browsers = Browsers.CHROME;
-        } else if (str.equalsIgnoreCase("edge")) {
-            browsers = Browsers.EDGE;
-        } else if (str.equalsIgnoreCase("firefox")) {
-            browsers = Browsers.FIREFOX;
-        } else {
-            browsers = Browsers.SAFARI;
-        }*/
-        browsers = (Browsers) browserInput();
+        browsers = Browsers.SAFARI;
         switch (browsers) {
             case CHROME:
-                if (desiredCapabilities.getPlatformName().is(Platform.WINDOWS)) {
-                    System.setProperty("webdriver.chrome.driver", "src/main/java/org/example/util/executables/windows/chromedriver_118.exe");
-                    driver = new ChromeDriver();
-                } else if (desiredCapabilities.getPlatformName().is(Platform.MAC)) {
-                    System.setProperty("webdriver.chrome.driver", "src/main/java/org/example/util/executables/mac/chromedriver_118");
-                    driver = new ChromeDriver();
-                }
+                ChromeOptions chromeOptions = new ChromeOptions();
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case EDGE:
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -122,22 +104,5 @@ public class BaseTest {
         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
         driver.get(properties.getProperty("url"));
-    }
-
-    public static Enum browserInput() {
-        Scanner scn = new Scanner(System.in);
-        System.out.println("Enter Browser Name: ");
-        String str = scn.next();
-        //Browsers browsers = null;
-        if (str.equalsIgnoreCase("chrome")) {
-            browsers = Browsers.CHROME;
-        } else if (str.equalsIgnoreCase("edge")) {
-            browsers = Browsers.EDGE;
-        } else if (str.equalsIgnoreCase("firefox")) {
-            browsers = Browsers.FIREFOX;
-        } else {
-            browsers = Browsers.SAFARI;
-        }
-        return browsers;
     }
 }
