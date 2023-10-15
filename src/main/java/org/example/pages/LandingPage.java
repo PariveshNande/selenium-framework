@@ -39,6 +39,10 @@ public class LandingPage extends BaseTest {
     @FindBy(xpath = "//font[normalize-space()='crm']")
     WebElement crmLogo;
 
+    String loginPageTitle = null;
+    String signUpPageTitle = null;
+    String aboutPageTitle = null;
+
     /**
      * Init Page Objects
      */
@@ -62,16 +66,34 @@ public class LandingPage extends BaseTest {
         return true;
     }
 
-    public void navigateToLoginPage() {
-        login.click();
+    public String navigateToLoginPage() {
+        if (login.isDisplayed() && login.isEnabled()) {
+            login.click();
+            loginPageTitle = driver.getTitle();
+        } else {
+            System.out.println("Login Button Disabled");
+        }
+        return loginPageTitle;
     }
 
-    public void navigateToSignUpPage() {
-        signUp.click();
+    public String navigateToSignUpPage() {
+        if (signUp.isDisplayed() && signUp.isEnabled()) {
+            signUp.click();
+            signUpPageTitle = driver.getTitle();
+        } else {
+            System.out.println("SignUp Button Disabled");
+        }
+        return signUpPageTitle;
     }
 
-    public void navigateToAbout() {
-        about.click();
+    public String navigateToAbout() {
+        if (about.isDisplayed() && about.isEnabled()) {
+            about.click();
+            aboutPageTitle = driver.getTitle();
+        } else {
+            System.out.println("About link is not working");
+        }
+        return aboutPageTitle;
     }
 
     public void navigateToCompare() {
