@@ -14,6 +14,8 @@ public class LandingPage extends BaseTest {
      * Page Factory for Landing Page
      */
 
+    LoginPage loginPage;
+
     @FindBy(xpath = "//span[normalize-space()='Log In']")
     WebElement login;
 

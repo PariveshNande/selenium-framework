@@ -13,11 +13,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -107,7 +110,11 @@ public class BaseTest {
         driver.get(properties.getProperty("url"));
     }
 
-    @AfterMethod
+    public void waitExplicitly(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    @AfterTest
     public void tearDown() {
         driver.quit();
     }
