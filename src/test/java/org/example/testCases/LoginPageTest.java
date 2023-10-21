@@ -10,6 +10,9 @@ import java.io.IOException;
 
 public class LoginPageTest extends BaseTest {
 
+    LoginPage loginPage;
+    LandingPage landingPage;
+
     public LoginPageTest() throws IOException {
     }
 
@@ -18,13 +21,13 @@ public class LoginPageTest extends BaseTest {
         browserInvocation();
         landingPage = new LandingPage();
     }
-    LoginPage loginPage = new LoginPage();
-    LandingPage landingPage = new LandingPage();
+
 
     @Test
     public void userLoginTest() throws IOException, InterruptedException {
         landingPage.navigateToLoginPage();
         Thread.sleep(3000);
+        loginPage = new LoginPage();
         loginPage.userLogin();
        /*
         try {

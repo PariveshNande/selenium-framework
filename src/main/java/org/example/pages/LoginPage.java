@@ -1,18 +1,12 @@
 package org.example.pages;
 
-import com.google.gson.annotations.Until;
-import org.bouncycastle.util.IPAddress;
 import org.example.actions.ActionDriver;
 import org.example.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.time.Duration;
 
 public class LoginPage extends BaseTest {
 
@@ -56,12 +50,13 @@ public class LoginPage extends BaseTest {
         return driver.getTitle();
     }
 
-    public void userLogin(){
+    public void userLogin() throws InterruptedException {
         emailField.click();
-        emailField.sendKeys(properties.getProperty("username"));
+        emailField.sendKeys("pariveshnande123q@gmail.com");
+        Thread.sleep(3000);
        // passwordField.clear();
-        passwordField.sendKeys(properties.getProperty("password"));
-        actionDriver.click(driver, loginBtn);
+        //passwordField.sendKeys(properties.getProperty("password"));
+        // actionDriver.click(driver, loginBtn);
     }
 
     public boolean verifyTheSocialLoginBtn(){

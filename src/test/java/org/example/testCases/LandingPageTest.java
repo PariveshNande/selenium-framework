@@ -33,7 +33,8 @@ public class LandingPageTest extends BaseTest {
     @Test(description = "Validate CRM logo visibility on screen", enabled = true)
     public void crmLogoValidationTest() {
         boolean flag = landingPage.validateCRMImage();
-        Assert.assertTrue(false);
+        Assert.assertTrue(flag);
+
     }
 
     @Test(description = "Validate login btn is enabled and on clicking in page navigates to login page and validated title of the page", enabled = true)
@@ -55,17 +56,17 @@ public class LandingPageTest extends BaseTest {
     }
 
     @Test(description = "", enabled = true)
-    public void navigateToComparePage() {
+    public void navigateToComparePage() throws IOException {
         landingPage.navigateToCompare();
     }
 
     @Test(description = "", enabled = true)
-    public void navigateToPricingPage() {
+    public void navigateToPricingPage() throws IOException {
         landingPage.navigateToPricing();
     }
 
     @Test(description = "", enabled = true)
-    public void navigateToSupportPage() {
+    public void navigateToSupportPage() throws IOException {
         landingPage.navigateToSupport();
     }
 

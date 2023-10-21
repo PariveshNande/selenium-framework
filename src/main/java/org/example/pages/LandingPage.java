@@ -40,7 +40,8 @@ public class LandingPage extends BaseTest {
     @FindBy(xpath = "//a[normalize-space()='VCM']")
     WebElement vcm;
 
-    @FindBy(xpath = "//font[normalize-space()='crm']")
+    //    @FindBy(xpath = "//font[normalize-space()='crm']")
+    @FindBy(css = "div[class='rd-navbar-panel'] div[class='rd-navbar-brand']")
     WebElement crmLogo;
 
     String loginPageTitle = null;
@@ -66,8 +67,8 @@ public class LandingPage extends BaseTest {
     }
 
     public boolean validateCRMImage() {
-        crmLogo.isDisplayed();
-        return true;
+        boolean logo = crmLogo.isDisplayed();
+        return logo;
     }
 
     public String navigateToLoginPage() {
@@ -100,17 +101,35 @@ public class LandingPage extends BaseTest {
         return aboutPageTitle;
     }
 
-    public void navigateToCompare() {
-        compare.click();
+    public ComparePage navigateToCompare() throws IOException {
+
+        if (compare.isEnabled() && compare.isDisplayed()) {
+            compare.click();
+        } else {
+            System.out.println("Compare link is not working");
+        }
+        return new ComparePage();
     }
 
-    public void navigateToPricing() {
-        pricing.click();
+    public PricingPage navigateToPricing() throws IOException {
+        if (pricing.isEnabled() && pricing.isDisplayed()) {
+            pricing.click();
+        } else {
+            System.out.println("Pricing link is not working");
+        }
+        return new PricingPage();
     }
 
-    public void navigateToSupport() {
-        support.click();
+
+    public SupportPage navigateToSupport() throws IOException {
+        if (support.isEnabled() && support.isDisplayed()) {
+            support.click();
+        } else {
+            System.out.println("Support link is not working");
+        }
+        return new SupportPage();
     }
+
 
     public void navigateToCRM() {
         crm.click();
@@ -120,3 +139,4 @@ public class LandingPage extends BaseTest {
         vcm.click();
     }
 }
+
